@@ -1,13 +1,9 @@
 {
     "items": [
-        {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": true},
+        {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": false},
         {"icon": "el-icon-notebook-1","index": "model1","title": "档案管理", "show": true,"subs": [
             {"index": "model1-1","title": "客户档案管理", "subs": [
                 {"index": "model1-1-1","title": "业务申请"},
-                {"index": "model1-1-2","title": "业务指派"},
-                {"index": "model1-1-3","title": "方案制定"},
-                {"index": "model1-1-4","title": "方案审批"},
-                {"index": "model1-1-5","title": "方案执行"},
                 {"index": "model1-1-6","title": "其他业务办理", "subs": [
                     {"index": "model1-1-6-1","title": "集团户维护"},
                     {"index": "model1-1-6-2","title": "抄表段采集片区维护"}
@@ -105,7 +101,7 @@
             {"index": "testpage","title": "测试页面"},
             {"index": "testpage2","title": "测试页面2"}
         ]},
-        {"icon": "el-icon-lx-copy", "index": "api", "title": "Element API","show": true, "subs": [
+        {"icon": "el-icon-lx-copy", "index": "api", "title": "Element API","show": false, "subs": [
             {"index": "table","title": "基础表格"},
             {"index": "tabs","title": "tab选项卡"},
             {"index": "icon","title": "自定义图标"},
@@ -125,7 +121,7 @@
                 {"index": "404","title": "404页面"}
             ]}
         ]},
-        {"icon": "el-icon-s-grid", "index": "custom", "title": "Custom Component","show": true, "subs": [
+        {"icon": "el-icon-s-grid", "index": "custom", "title": "Custom Component","show": false, "subs": [
             {"index": "from", "title": "表单相关","subs": [
                 {"index": "input","title": "输入框"},
                 {"index": "select","title": "定义下拉组件"},

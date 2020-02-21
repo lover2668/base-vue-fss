@@ -1,5 +1,6 @@
 <template>
     <div class="sidebar">
+        <!-- 
         <el-menu class="sidebar-el-menu" :default-active="onRoutes" 
             :collapse="collapse" background-color="#324157" text-color="#bfcbd9" 
             active-text-color="#20a0ff" unique-opened router>
@@ -28,7 +29,9 @@
                     </el-menu-item>
                 </template>
             </template>
-        </el-menu>
+        </el-menu>  -->
+
+        <el-tree :data="items" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
     </div>
 </template>
 
@@ -38,7 +41,11 @@
         data() {
             return {
                 collapse: false,
-                items: []
+                items: [],
+                defaultProps: {
+                    children: 'subs',
+                    label: 'title'
+                }
             }
         },
         computed:{
@@ -47,17 +54,48 @@
             }
         },
         created(){
-            this.$InitMenu("items");
+            // this.$InitMenu("items");
             // 通过 Event Bus 进行组件间通信，来折叠侧边栏
-            bus.$on('collapse', msg => {
-                this.collapse = msg;
-            })
+            // bus.$on('collapse', msg => {
+            //     this.collapse = msg;
+            // }),
+            let self = this;
+            //当前菜单显示内容的获取
+            bus.$on('menuItem', res => {
+                let newMenuData = [];
+                self.$my.getSource(self, self.$my.menu_path).then(d => {
+                    let data = d.data.items;
+                    data.forEach(key => {
+                        if(key.index == res.index) newMenuData = key.subs;
+                    })
+                    self.items = newMenuData;
+                });
+            });
+            //初始化默认显示档案管理下内容
+            this.handleInitMenuData();
+        },
+        methods: {
+            //初始化页面菜单参数处理
+            handleInitMenuData(){
+                let self = this,newData = [],defaultIndex="model1";
+                this.$my.getSource(this, this.$my.menu_path).then(res => {
+                    if(res.status == 200){
+                        res.data.items.forEach(item => {
+                            if(item.index == defaultIndex) self.items = item.subs;
+                        })
+                    }
+                })
+            },
+            //菜单点击事件的触发
+            handleNodeClick(data) {
+                console.log(data);
+            },
         }
     }
 </script>
 
 <style scoped>
-    .sidebar{display: block;position: absolute;left: 0;top: 60px;bottom:0;overflow-y: scroll;}
+    .sidebar{display: block;position: absolute;left: 0;top: 60px;bottom:0;overflow-y: scroll;width: 200px;}
     .sidebar::-webkit-scrollbar{ width: 0; }
     .sidebar > ul {height:100%;}
     .sidebar-el-menu:not(.el-menu--collapse){

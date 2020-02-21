@@ -1,19 +1,26 @@
 <template>
     <div class="header">
-        <!-- 折叠按钮 -->
+        <!-- 折叠按钮
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
-        </div>
+        </div> -->
+        <!-- 文本描述 -->
         <div class="logo">陕西省地方电力营销管理系统</div>
+        <!-- 右侧一级菜单 -->
+        <ul class="right-menu">
+            <li v-for="(item,index) in menuData" :key="index">
+                <a href="javascript: void(0)" :data-index="item.index" @click="() => handleMenuClick(item,index)">{{item.title}}</a>
+            </li>
+        </ul>
+
+        <!-- 右侧用户信息内容区域
         <div class="header-right">
             <div class="header-user-con" style="position: relative;width: 130px;">
-                <!-- 全屏显示
                 <div class="btn-fullscreen" @click="handleFullScreen">
                     <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
                         <i class="el-icon-rank"></i>
                     </el-tooltip>
-                </div> -->
-                <!-- 消息中心
+                </div>
                 <div class="btn-bell">
                     <el-tooltip effect="dark" :content="message?`有${message}条未读消息`:`消息中心`" placement="bottom">
                         <router-link to="/tabs">
@@ -21,10 +28,8 @@
                         </router-link>
                     </el-tooltip>
                     <span class="btn-bell-badge" v-if="message"></span>
-                </div> -->
-                <!-- 用户头像 -->
+                </div>
                 <div class="user-avator" style="display: inline-block;position: absolute; top: 10px;"><img src="../../assets/img/img.jpg"></div>
-                <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand" style="display: inline-block;position: absolute; left: 50px;top: 24px;">
                     <span class="el-dropdown-link">
                         {{username}} <i class="el-icon-caret-bottom"></i>
@@ -37,7 +42,7 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -48,8 +53,21 @@
                 collapse: false,
                 fullscreen: false,
                 name: 'linxin',
-                message: 2
+                message: 2,
+                //新菜单数据定义
+                menuData: []
             }
+        },
+        created(){
+            let self = this;
+            this.$my.getSource(this, this.$my.menu_path).then(res => {
+                if(res.status == 200){
+                    let menuData = [];
+                    res.data.items.forEach(_ => {
+                        if(_.hasOwnProperty('show') && _.show)  self.menuData.push(_);
+                    });
+                }
+            });
         },
         computed:{
             username(){
@@ -67,7 +85,8 @@
             },
             // 侧边栏折叠
             collapseChage(){
-                this.collapse = !this.collapse;
+                // this.collapse = !this.collapse;
+                this.collapse = false;
                 bus.$emit('collapse', this.collapse);
             },
             // 全屏事件
@@ -96,6 +115,10 @@
                     }
                 }
                 this.fullscreen = !this.fullscreen;
+            },
+            //顶部菜单的点击事件
+            handleMenuClick(data, index){
+                bus.$emit("menuItem", data);
             }
         },
         mounted(){
@@ -106,78 +129,110 @@
     }
 </script>
 <style scoped>
-    .header {
-        position: relative;
-        box-sizing: border-box;
-        width: 100%;
-        height: 60px;
-        font-size: 22px;
-        color: #fff;
-        background: 163c6d !important;
-    }
-    .collapse-btn{
-        float: left;
-        padding: 0 21px;
-        cursor: pointer;
-        line-height: 60px;
-    }
-    .header .logo{
-        float: left;
-        width:300px;
-        line-height: 60px;
-    }
-    .header-right{
-        float: right;
-        padding-right: 50px;
-    }
-    .header-user-con{
-        display: flex;
-        height: 60px;
-        align-items: center;
-    }
-    .btn-fullscreen{
-        transform: rotate(45deg);
-        margin-right: 5px;
-        font-size: 24px;
-    }
-    .btn-bell, .btn-fullscreen{
-        position: relative;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-        border-radius: 15px;
-        cursor: pointer;
-    }
-    .btn-bell-badge{
-        position: absolute;
-        right: 0;
-        top: -2px;
-        width: 8px;
-        height: 8px;
-        border-radius: 4px;
-        background: #f56c6c;
-        color: #fff;
-    }
-    .btn-bell .el-icon-bell{
-        color: #fff;
-    }
-    .user-name{
-        /* margin-left: 10px; */
-    }
-    .user-avator{
-        /* margin-left: 20px; */
-    }
-    .user-avator img{
-        display: inline-block;
-        width:40px;
-        height:40px;
-        border-radius: 50%;
-    }
-    .el-dropdown-link{
-        color: #fff;
-        cursor: pointer;
-    }
-    .el-dropdown-menu__item{
-        text-align: center;
-    }
+.header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    color: #fff;
+    background: 163c6d !important;
+}
+.collapse-btn{
+    float: left;
+    padding: 0 21px;
+    cursor: pointer;
+    line-height: 60px;
+}
+.header .logo{
+    float: left;
+    width:300px;
+    line-height: 60px;
+    margin-left: 10px;
+}
+.header-right{
+    float: right;
+    padding-right: 50px;
+}
+.header-user-con{
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+.btn-fullscreen{
+    transform: rotate(45deg);
+    margin-right: 5px;
+    font-size: 24px;
+}
+.btn-bell, .btn-fullscreen{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.btn-bell-badge{
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: #f56c6c;
+    color: #fff;
+}
+.btn-bell .el-icon-bell{
+    color: #fff;
+}
+.user-name{
+    /* margin-left: 10px; */
+}
+.user-avator{
+    /* margin-left: 20px; */
+}
+.user-avator img{
+    display: inline-block;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+.el-dropdown-link{
+    color: #fff;
+    cursor: pointer;
+}
+.el-dropdown-menu__item{
+    text-align: center;
+}
+
+/* 样式重新定义 */
+.menu_active{
+    background: #6ACBFA;
+    border-bottom: 2px solid #163C6D;
+}
+.right-menu{
+    list-style-type: none;
+    position: absolute;
+    right: 10px;
+    overflow: hidden;
+}
+.right-menu>li{
+    float: left;
+    width: 120px;
+    height: 57px;
+    line-height: 60px;
+}
+.right-menu>li:hover{
+    background: #6ACBFA;
+    border-bottom: 2px solid #163C6D;
+}
+.right-menu>li>a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+.right-menu>li>a:hover{
+    color: #fff;
+}
 </style>
