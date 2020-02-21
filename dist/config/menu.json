@@ -1,0 +1,140 @@
+{
+    "items": [
+        {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": true},
+        {"icon": "el-icon-notebook-1","index": "model1","title": "档案管理", "show": true,"subs": [
+            {"index": "model1-1","title": "客户档案管理", "subs": [
+                {"index": "model1-1-1","title": "业务受理"},
+                {"index": "model1-1-2","title": "方案执行"},
+                {"index": "model1-1-3","title": "其他业务办理", "subs": [
+                    {"index": "model1-1-3-1","title": "集团户维护"},
+                    {"index": "model1-1-3-2","title": "抄表段采集片区维护"}
+                ]}
+            ]},
+            {"index": "model1-2","title": "计量档案管理", "subs": [
+                {"index": "model1-2-1","title": "计量装置换装"},
+                {"index": "model1-2-2","title": "计量装置换装工单"}
+            ]},
+            {"index": "model1-3","title": "电价档案管理", "subs": [
+                {"index": "model1-3-1","title": "销售电价维护申请"},
+                {"index": "model1-3-2","title": "购电价维护申请"},
+                {"index": "model1-3-3","title": "待办任务"},
+                {"index": "model1-3-4","title": "电价下发管理"},
+                {"index": "model1-3-5","title": "各单位售电价设置"},
+                {"index": "model1-3-6","title": "各单位购电价设置"}
+            ]},
+            {"index": "model1-4","title": "网架档案管理"},
+            {"index": "model1-5","title": "配网GIS对照管理"},
+            {"index": "model1-6","title": "待办事项", "subs": [
+                {"index": "model1-6-1","title": "待办任务"},
+                {"index": "model1-6-2","title": "工单办理跟踪"}
+            ]}
+        ]},
+        {"icon": "el-icon-coin","index": "model2","title": "电费核算管理", "show": true, "subs": [
+            {"index": "model2-1","title": "算费任务跟踪"},
+            {"index": "model2-2","title": "算费工单管理", "subs": [
+                {"index": "model2-2-1","title": "算费任务统计"},
+                {"index": "model2-2-2","title": "发起工单管理"},
+                {"index": "model2-2-3","title": "准备工单管理"},
+                {"index": "model2-2-4","title": "抄表工单管理"},
+                {"index": "model2-2-5","title": "工单计算管理"},
+                {"index": "model2-2-6","title": "结果处理管理"},
+                {"index": "model2-2-7","title": "工单发行管理"},
+                {"index": "model2-2-8","title": "工单推送管理"}
+            ]},
+            {"index": "model2-3","title": "灵活售电费发行", "subs": [
+                {"index": "model2-3-1","title": "灵活算费工单查询"},
+                {"index": "model2-3-1","title": "电费明细查询"}
+            ]},
+            {"index": "model2-4","title": "退补管理", "subs": [
+                {"index": "model2-3-1","title": "政策性退补"},
+                {"index": "model2-3-1","title": "非政策性退补"}
+            ]},
+            {"index": "model2-5","title": "购电费管理", "subs": [
+                {"index": "model2-3-1","title": "购电量基数维护"},
+                {"index": "model2-3-1","title": "购电费分摊"}
+            ]},
+            {"index": "model2-6","title": "待办任务"}
+        ]},
+        {"icon": "el-icon-tickets","index": "model3","title": "抄表管理", "show": true, "subs": [
+            {"index": "model3-1","title": "抄表工单统计"},
+            {"index": "model3-2","title": "抄表未完工单"},
+            {"index": "model3-3","title": "抄表未审核工单"},
+            {"index": "model3-4","title": "待办任务"}
+        ]},
+        {"icon": "el-icon-data-analysis","index": "model4","title": "查询统计管理", "show": true, "subs": [
+            {"index": "model4-1","title": "客户档案查询", "subs": [
+                {"index": "model4-1-1","title": "基本档案查询"},
+                {"index": "model4-1-2","title": "工作流程查询"},
+                {"index": "model4-1-3","title": "合同查询"},
+                {"index": "model4-1-4","title": "点价档案查询"},
+                {"index": "model4-1-5","title": "网架结构查询"},
+                {"index": "model4-1-6","title": "集团户查询"},
+                {"index": "model4-1-7","title": "计量档案查询"}
+            ]},
+            {"index": "model4-2","title": "电费核算查询", "subs": [
+                {"index": "model4-2-1","title": "电量电费查询"},
+                {"index": "model4-2-2","title": "收电费退补查询"},
+                {"index": "model4-2-3","title": "抄表工单查询"},
+                {"index": "model4-2-4","title": "购电费分摊记录查询"},
+                {"index": "model4-2-5","title": "购电量电费查询"}
+            ]},
+            {"index": "model4-3","title": "售电公司核算查询", "subs": [
+                {"index": "model4-3-1","title": "结算工单统计查询"},
+                {"index": "model4-3-2","title": "退补工单统计查询"}
+            ]}
+        ]},
+        {"icon": "el-icon-date","index": "model5","title": "报表管理", "show": true, "subs": [
+            {"index": "model5-1","title": "报表设计生成"},
+            {"index": "model5-2","title": "报表审批"},
+            {"index": "model5-3","title": "报表查询"}
+        ]},
+        {"icon": "el-icon-setting","index": "model6","title": "系统管理", "show": true, "subs": [
+            {"index": "model6-1","title": "操作员管理"},
+            {"index": "model6-2","title": "权限委托"},
+            {"index": "model6-3","title": "消息管理"}
+        ]},
+
+
+
+
+        {"icon": "el-icon-set-up", "index": "demo", "title": "G6", "subs": [
+            {"index": "G6Demo","title": "G6 - 图表"},
+            {"index": "testpage","title": "测试页面"},
+            {"index": "testpage2","title": "测试页面2"}
+        ]},
+        {"icon": "el-icon-lx-copy", "index": "api", "title": "Element API","show": true, "subs": [
+            {"index": "table","title": "基础表格"},
+            {"index": "tabs","title": "tab选项卡"},
+            {"index": "icon","title": "自定义图标"},
+            {"index": "charts","title": "schart图表"},
+            {"index": "6","title": "拖拽组件","subs": [
+                {"index": "drag","title": "拖拽列表"},
+                {"index": "dialog", "title": "拖拽弹框"}
+            ]},
+            {"index": "3","title": "表单相关","subs": [
+                {"index": "form","title": "基本表单"},
+                {"index": "editor","title": "富文本编辑器"},
+                {"index": "markdown","title": "markdown编辑器"},
+                {"index": "upload","title": "文件上传"}
+            ]},
+            {"index": "7","title": "错误处理","subs": [
+                {"index": "permission","title": "权限测试"},
+                {"index": "404","title": "404页面"}
+            ]}
+        ]},
+        {"icon": "el-icon-s-grid", "index": "custom", "title": "Custom Component","show": true, "subs": [
+            {"index": "from", "title": "表单相关","subs": [
+                {"index": "input","title": "输入框"},
+                {"index": "select","title": "定义下拉组件"},
+                {"index": "dateTimePicker","title": "时间日期组件"},
+                {"index": "Cascader", "title": "级联选择器"},
+                {"index": "fileUpload", "title": "资源上传"},
+                {"index": "from","title": "表单"}
+            ]},
+            {"index": "tree","title": "树形控件"},
+            {"index": "showDialog", "title": "Dialog 弹层"},
+            {"index": "customTable","title": "定义表格"},
+            {"index": "customMsg","title": "消息提示窗"}
+        ]}
+    ]
+}
