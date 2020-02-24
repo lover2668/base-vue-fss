@@ -172,6 +172,9 @@ a {
     min-height: 500px;
 }
 
+/* 滚动条的控制 */
+::-webkit-scrollbar{width: 0 !important}
+
 /* 
  * 菜单颜色调整 
  * @Date：2020-02-15 

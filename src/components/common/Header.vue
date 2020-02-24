@@ -1,17 +1,11 @@
 <template>
     <div class="header">
-        <!-- 折叠按钮
+        <!-- 折叠按钮 -->
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
-        </div> -->
+        </div>
         <!-- 文本描述 -->
         <div class="logo">电力营销管理系统</div>
-        <!-- 右侧一级菜单 -->
-        <ul class="right-menu">
-            <li v-for="(item,index) in menuData" :key="index">
-                <a href="javascript: void(0)" :data-index="item.index" @click="() => handleMenuClick(item,index)">{{item.title}}</a>
-            </li>
-        </ul>
 
         <!-- 右侧用户信息内容区域 -->
         <div class="header-right">
@@ -30,7 +24,7 @@
                     <span class="btn-bell-badge" v-if="message"></span>
                 </div> -->
                 <div class="user-avator" style="display: inline-block;position: absolute; top: 5px;"><img src="../../assets/img/img.jpg"></div>
-                <el-dropdown class="user-name" trigger="click" @command="handleCommand" style="display: inline-block;position: absolute; left: 50px;top: 24px;">
+                <el-dropdown class="user-name" trigger="click" @command="handleCommand" style="display: inline-block;position: absolute; left: 50px;top: 18px;">
                     <span class="el-dropdown-link">
                         {{username}} <i class="el-icon-caret-bottom"></i>
                     </span>
@@ -86,7 +80,6 @@
             // 侧边栏折叠
             collapseChage(){
                 // this.collapse = !this.collapse;
-                this.collapse = false;
                 bus.$emit('collapse', this.collapse);
             },
             // 全屏事件
@@ -150,7 +143,7 @@
     width:190px;
     line-height: 50px;
     padding-left: 10px;
-    background: #0D2E5D;
+    /* background: #0D2E5D; */
 }
 .header-right{
     float: right;
@@ -205,37 +198,5 @@
 }
 .el-dropdown-menu__item{
     text-align: center;
-}
-
-/* 样式重新定义 */
-.menu_active{
-    background: #6ACBFA;
-    border-bottom: 2px solid #163C6D;
-}
-.right-menu{
-    list-style-type: none;
-    position: absolute;
-    left: 200px;
-    overflow: hidden;
-}
-.right-menu>li{
-    float: left;
-    width: 120px;
-    height: 47px;
-    line-height: 50px;
-}
-.right-menu>li:hover{
-    background: #0D2E5D;
-    border-bottom: 2px solid #163C6D;
-}
-.right-menu>li>a{
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 16px;
-}
-.right-menu>li>a:hover{
-    color: #fff;
 }
 </style>

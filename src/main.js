@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from '@/App.vue';
 import router from '@/router';
 import axios from 'axios';
-//import $ from 'jquery'
+import $ from 'jquery'
 import ElementUI from 'element-ui';
 import VueI18n from 'vue-i18n';
 import VueResource from 'vue-resource';
@@ -27,7 +27,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
 Vue.prototype.$my = defaultParam;
-//Vue.prototype.$ = $;
+Vue.prototype.$ = $;
 Vue.use(VueI18n);
 Vue.use(ElementUI, {size: 'small'});
 Vue.use(VueResource);

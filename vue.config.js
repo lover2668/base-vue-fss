@@ -9,5 +9,14 @@ module.exports = {
                 changeOrigin:true,
             }
         }
+    },
+    configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                "windows.jQuery": "jquery"
+            })
+        ]
     }
 };
