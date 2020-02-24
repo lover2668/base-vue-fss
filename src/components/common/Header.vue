@@ -5,7 +5,7 @@
             <i class="el-icon-menu"></i>
         </div> -->
         <!-- 文本描述 -->
-        <div class="logo">陕西省地方电力营销管理系统</div>
+        <div class="logo">电力营销管理系统</div>
         <!-- 右侧一级菜单 -->
         <ul class="right-menu">
             <li v-for="(item,index) in menuData" :key="index">
@@ -13,10 +13,10 @@
             </li>
         </ul>
 
-        <!-- 右侧用户信息内容区域
+        <!-- 右侧用户信息内容区域 -->
         <div class="header-right">
             <div class="header-user-con" style="position: relative;width: 130px;">
-                <div class="btn-fullscreen" @click="handleFullScreen">
+                <!-- <div class="btn-fullscreen" @click="handleFullScreen">
                     <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
                         <i class="el-icon-rank"></i>
                     </el-tooltip>
@@ -28,8 +28,8 @@
                         </router-link>
                     </el-tooltip>
                     <span class="btn-bell-badge" v-if="message"></span>
-                </div>
-                <div class="user-avator" style="display: inline-block;position: absolute; top: 10px;"><img src="../../assets/img/img.jpg"></div>
+                </div> -->
+                <div class="user-avator" style="display: inline-block;position: absolute; top: 5px;"><img src="../../assets/img/img.jpg"></div>
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand" style="display: inline-block;position: absolute; left: 50px;top: 24px;">
                     <span class="el-dropdown-link">
                         {{username}} <i class="el-icon-caret-bottom"></i>
@@ -42,7 +42,7 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 <script>
@@ -118,6 +118,7 @@
             },
             //顶部菜单的点击事件
             handleMenuClick(data, index){
+                
                 bus.$emit("menuItem", data);
             }
         },
@@ -133,22 +134,23 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 60px;
+    height: 50px;
     font-size: 22px;
     color: #fff;
-    background: 163c6d !important;
+    background: #163c6d !important;
 }
 .collapse-btn{
     float: left;
     padding: 0 21px;
     cursor: pointer;
-    line-height: 60px;
+    line-height: 50px;
 }
 .header .logo{
     float: left;
-    width:300px;
-    line-height: 60px;
-    margin-left: 10px;
+    width:190px;
+    line-height: 50px;
+    padding-left: 10px;
+    background: #0D2E5D;
 }
 .header-right{
     float: right;
@@ -156,7 +158,7 @@
 }
 .header-user-con{
     display: flex;
-    height: 60px;
+    height: 50px;
     align-items: center;
 }
 .btn-fullscreen{
@@ -213,17 +215,17 @@
 .right-menu{
     list-style-type: none;
     position: absolute;
-    right: 10px;
+    left: 200px;
     overflow: hidden;
 }
 .right-menu>li{
     float: left;
     width: 120px;
-    height: 57px;
-    line-height: 60px;
+    height: 47px;
+    line-height: 50px;
 }
 .right-menu>li:hover{
-    background: #6ACBFA;
+    background: #0D2E5D;
     border-bottom: 2px solid #163C6D;
 }
 .right-menu>li>a{
@@ -231,6 +233,7 @@
     width: 100%;
     text-align: center;
     color: #fff;
+    font-size: 16px;
 }
 .right-menu>li>a:hover{
     color: #fff;

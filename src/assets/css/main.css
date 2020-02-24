@@ -25,7 +25,7 @@ a {
     position: absolute;
     left: 200px;
     right: 0;
-    top: 60px;
+    top: 50px;
     bottom: 0;
     padding-bottom: 30px;
     -webkit-transition: left .3s ease-in-out;
@@ -176,8 +176,12 @@ a {
  * 菜单颜色调整 
  * @Date：2020-02-15 
  * @Author：yangzeng */
-.el-menu-item,.el-submenu__title,.el-menu-item,.sidebar-el-menu{background-color: #163C6D !important;}
-/* .is-active,.is-opened{background-color: #275089 !important;} */
+/* .el-menu-item,.el-submenu__title,.el-menu-item,.sidebar-el-menu{background-color: #163C6D !important;}
+.is-active,.is-opened{background-color: #275089 !important;} */
 
 /* 表格间距的调整 */
 .el-table--small td, .el-table--small th{padding: 5px 0 !important;}
+/* Sidebar 菜单定义 */
+/* .sidebar .el-tree-node__content{height: 45px !important;background-color: #163C6D !important;}
+.sidebar .el-tree-node__content:hover{background-color: #275290 !important;}
+.sidebar .is-current{background-color: #275290 !important;} */

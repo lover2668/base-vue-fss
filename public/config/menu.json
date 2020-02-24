@@ -3,7 +3,15 @@
         {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": false},
         {"icon": "el-icon-notebook-1","index": "model1","title": "档案管理", "show": true,"subs": [
             {"index": "model1-1","title": "客户档案管理", "subs": [
-                {"index": "model1-1-1","title": "业务申请"},
+                {"index": "model1-1-1","title": "业务申请", "subs": [
+                    {"index": "model1-1-1-1","title": "新装"},
+                    {"index": "model1-1-1-1","title": "变更"},
+                    {"index": "model1-1-1-1","title": "销户"},
+                    {"index": "model1-1-1-1","title": "批量新装"},
+                    {"index": "model1-1-1-1","title": "批量销户"},
+                    {"index": "model1-1-1-1","title": "批量更改线路台区"},
+                    {"index": "model1-1-1-2","title": "批量移户"}
+                ]},
                 {"index": "model1-1-6","title": "其他业务办理", "subs": [
                     {"index": "model1-1-6-1","title": "集团户维护"},
                     {"index": "model1-1-6-2","title": "抄表段采集片区维护"}
