@@ -1,6 +1,6 @@
 {
     "items": [
-        {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": false},
+        {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": true},
         {"icon": "el-icon-notebook-1","index": "model1","title": "档案管理", "show": true,"subs": [
             {"index": "model1-1","title": "客户档案管理", "subs": [
                 {"index": "model1-1-1","title": "业务申请", "subs": [

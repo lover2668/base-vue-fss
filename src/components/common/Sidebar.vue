@@ -2,21 +2,23 @@
     <div class="sidebar">
         <ul class="menu-list">
             <li class="list-item-li" v-for="(item, index) in menuList" :key="index">
-                <a v-if="index == 0" href="javascript: void(0)" :class="{'menu-list-item': true, 'is-active': true} " @click="(e)=>handleClickItem(e,item)">
-                    <i :class="'menu-item-icon '+ item.icon"></i>
-                    <span class="menu-item-content">{{item.title}}</span>
-                    <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
-                </a>
-                <a v-else href="javascript: void(0)" class="menu-list-item" @click="(e)=>handleClickItem(e,item)">
-                    <i :class="'menu-item-icon '+ item.icon"></i>
-                    <span class="menu-item-content">{{item.title}}</span>
-                    <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
-                </a>
-                <ul class="child-menu-list" data-show="false" v-if="item.hasOwnProperty('subs')" style="display: none;">
-                    <li v-for="(i,num) in menuList[index].subs" :key="num">
-                        <a href="javascript: void(0)"><i class="menu-bar"></i>{{i.title}}</a>
-                    </li>
-                </ul>
+                <template v-if="item.hasOwnProperty('show') && item.show">
+                    <a v-if="index == 0" href="javascript: void(0)" :class="{'menu-list-item': true, 'is-active': true} " @click="(e)=>handleClickItem(e,item)">
+                        <i :class="'menu-item-icon '+ item.icon"></i>
+                        <span class="menu-item-content">{{item.title}}</span>
+                        <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
+                    </a>
+                    <a v-else href="javascript: void(0)" class="menu-list-item" @click="(e)=>handleClickItem(e,item)">
+                        <i :class="'menu-item-icon '+ item.icon"></i>
+                        <span class="menu-item-content">{{item.title}}</span>
+                        <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
+                    </a>
+                    <ul class="child-menu-list" data-show="false" v-if="item.hasOwnProperty('subs')" style="display: none;">
+                        <li v-for="(i,num) in menuList[index].subs" :key="num">
+                            <a href="javascript: void(0)"><i class="menu-bar"></i>{{i.title}}</a>
+                        </li>
+                    </ul>
+                </template>
             </li>
         </ul>
     </div>
