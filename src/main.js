@@ -46,7 +46,6 @@ Object.keys(filters).forEach(key => {
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
     const role = localStorage.getItem('user_name');
-    console.log(to.path);
     if (!role && to.path !== '/login') {
         next('/login');
     }

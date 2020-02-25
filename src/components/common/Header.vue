@@ -111,7 +111,6 @@
             },
             //顶部菜单的点击事件
             handleMenuClick(data, index){
-                
                 bus.$emit("menuItem", data);
             }
         },

@@ -129,7 +129,7 @@
                 {"index": "404","title": "404页面"}
             ]}
         ]},
-        {"icon": "el-icon-s-grid", "index": "custom", "title": "Custom Component","show": false, "subs": [
+        {"icon": "el-icon-s-grid", "index": "custom", "title": "Custom Component","show": true, "subs": [
             {"index": "from", "title": "表单相关","subs": [
                 {"index": "input","title": "输入框"},
                 {"index": "select","title": "定义下拉组件"},

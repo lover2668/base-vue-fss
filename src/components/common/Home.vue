@@ -2,8 +2,9 @@
     <div class="wrapper">
         <v-head></v-head>
         <v-sidebar></v-sidebar>
+        <v-sidebar-child></v-sidebar-child>
         <div class="content-box" :class="{'content-collapse':collapse}">
-            <v-tags ref="tags"></v-tags>
+            <v-breadcrumb></v-breadcrumb>
             <div class="content">
                 <transition name="move" mode="out-in">
                     <keep-alive :include="tagsList">
@@ -18,7 +19,8 @@
 <script>
     import vHead from './Header.vue';
     import vSidebar from './Sidebar.vue';
-    import vTags from './Tags.vue';
+    import vSidebarChild from './Sidebar_Child.vue';
+    import vBreadcrumb from './Breadcrumb.vue';
     import bus from './bus';
     export default {
         data(){
@@ -28,7 +30,7 @@
             }
         },
         components:{
-            vHead, vSidebar, vTags
+            vHead, vSidebar, vSidebarChild,vBreadcrumb
         },
         created(){
             bus.$on('collapse', msg => {
