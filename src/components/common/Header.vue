@@ -1,11 +1,20 @@
 <template>
     <div class="header">
-        <!-- 折叠按钮 -->
+        <!-- 折叠按钮
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
-        </div>
+        </div> -->
         <!-- 文本描述 -->
         <div class="logo">电力营销管理系统</div>
+        <!-- 一级菜单区域 -->
+        <div>
+            <ul class="top-menu">
+                <li v-for="(item, index) in menuData" :key="index">
+                    <a href="javascript: void(0)" v-if="index == showItem" class="top-menu-item top-active" @click="(e)=>handleCheckTopMenu(e,item)">{{item.title}}</a>
+                    <a href="javascript: void(0)" v-else class="top-menu-item" @click="(e)=>handleCheckTopMenu(e,item)">{{item.title}}</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- 右侧用户信息内容区域 -->
         <div class="header-right">
@@ -49,7 +58,9 @@
                 name: 'linxin',
                 message: 2,
                 //新菜单数据定义
-                menuData: []
+                menuData: [],
+                //默认的选中参数
+                showItem: 1
             }
         },
         created(){
@@ -110,7 +121,9 @@
                 this.fullscreen = !this.fullscreen;
             },
             //顶部菜单的点击事件
-            handleMenuClick(data, index){
+            handleCheckTopMenu(e, data){
+                $(".top-menu-item").removeClass("top-active");
+                $(e.target).addClass("top-active");
                 bus.$emit("menuItem", data);
             }
         },
@@ -197,5 +210,43 @@
 }
 .el-dropdown-menu__item{
     text-align: center;
+}
+
+/* 一级菜单内容区域添加 */
+.top-menu{
+    width: calc(100% - 520px);
+    position: absolute;
+    left: 210px;
+    height: 100%;
+}
+.top-menu:after{
+    content: "";
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.top-menu>li{
+    float: left;
+    height: 100%;
+    line-height: 100%;
+}
+.top-menu>li>a{
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    font-size: 18px;
+    width: 95px;
+    text-align: center;
+}
+.top-menu>li>a:hover{
+    background-color: #2E5893;
+    border-bottom: 2px solid #54BDED;
+}
+
+/* 一级菜单选中的控制 */
+.top-active{
+    background-color: #2E5893;
+    border-bottom: 2px solid #54BDED; 
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <!-- 一级菜单 -->
-    <div class="sidebar_drawer" v-if="showDrawer">
+    <div class="sidebar_drawer" :style="'top:'+menuTop+'px'" v-if="showDrawer" @mouseleave="handleItemMouseleave()">
         <ul class="child-menu">
             <li v-for="(item,index) in menuList" :key="index" class="child-menu-item">
                 <template v-if="item.hasOwnProperty('subs')">
@@ -28,25 +28,32 @@
                 showDrawer: false,
                 //控制菜单是否显示
                 menuList: [],
+                menuTop: 0
             }
         },
         created(){
-            //全部菜单数据的定义
-            this.$InitMenu("menuList");
-            //初始化默认显示档案管理下内容
-            bus.$on("isShowDrawer", res => {
-                this.showDrawer = res;
+            //捕获显示
+            bus.$on('showChildMenu', res => {
+                this.menuList = res.data.subs;
+                this.menuTop = $(res.el).offset().top;
+                this.showDrawer = true;
             });
-            bus.$on("drawerData", res => {
-                this.menuList = res.subs;
+            //捕获关闭
+            bus.$on("hideChildMenu", res => {
+                this.showDrawer = false;
             });
         },
         methods: {
-            //菜单跳转事件的触发
+            //菜单点击跳转事件的触发
             handleMenuItemClick2(ele, data){
                 this.$router.push(data.index);
                 this.showDrawer = !this.showDrawer;
                 bus.$emit('upShowDrawer', this.showDrawer);
+            },
+            //菜单鼠标离开时的事件监听
+            handleItemMouseleave(){
+                this.showDrawer = false;
+                bus.$emit("closeDropBox", null);
             }
         }
     }
@@ -55,8 +62,8 @@
 <style scoped>
 /* 子菜单框体 */
 .sidebar_drawer{
-    min-width: 290px;
-    height: calc(100% - 100px);
+    min-width: 200px;
+    height: auto;
     background-color: #fff;
     border: 1px solid #ddd;
     position: absolute;

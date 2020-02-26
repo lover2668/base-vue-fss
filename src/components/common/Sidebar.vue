@@ -4,7 +4,7 @@
         <ul class="menu-list">
             <!-- 一级菜单列表 -->
             <li class="list-item-li" v-for="(item, index) in menuList" :key="index">
-                <template v-if="item.hasOwnProperty('show') && item.show">
+                <!-- <template v-if="item.hasOwnProperty('show') && item.show">
                     <a v-if="index == 0" href="javascript: void(0)" :class="{'menu-list-item': true, 'is-active': true} " 
                         @click="(e)=>handleClickItem(e,item)">
                         <i :class="'menu-item-icon '+ item.icon"></i>
@@ -15,9 +15,8 @@
                         <i :class="'menu-item-icon '+ item.icon"></i>
                         <span class="menu-item-content">{{item.title}}</span>
                         <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
-                    </a>
+                    </a> 
                     <ul class="child-menu-list" data-show="false" v-if="item.hasOwnProperty('subs')" style="display: none;">
-                        <!-- 二级菜单列表 -->
                         <li v-for="(i,num) in menuList[index].subs" :key="num" style="position: relative;" class="child-menu-list-item">
                             <a href="javascript: void(0)" v-if="i.hasOwnProperty('subs')" @click="(e)=>handleChildItemClick(i,num,e)">
                                 <i class="menu-bar"></i>{{i.title}}
@@ -26,7 +25,21 @@
                             <a href="javascript: void(0)" v-else @click="(e)=>handleChildItemClick(i,num,e)"><i class="menu-bar" ></i>{{i.title}}</a>
                         </li>
                     </ul>
-                </template>
+                </template> -->
+                <a href="javascript: void(0)" class="menu-list-item" @click="(e)=>handleClickItem(e,item)">
+                    <i :class="'menu-item-icon '+ item.icon"></i>
+                    <span class="menu-item-content">{{item.title}}</span>
+                    <span class="menu-item-bar el-icon-arrow-down" v-if="item.hasOwnProperty('subs')"></span>
+                </a>
+                <ul class="child-menu-list" data-show="false" v-if="item.hasOwnProperty('subs')" style="display: none;">
+                    <li v-for="(i,num) in menuList[index].subs" :key="num" style="position: relative;" class="child-menu-list-item">
+                        <a href="javascript: void(0)" v-if="i.hasOwnProperty('subs')" @mouseover="(e)=>handleOpenCHildMenuList(i,e)" @mouseleave="(e)=>handleCloseChildMenuList(e)">
+                            <i class="menu-bar"></i>{{i.title}}
+                            <i class="menu-bar-right el-icon-arrow-right"></i>
+                        </a>
+                        <a href="javascript: void(0)" v-else @click="(e)=>handleChildItemClick(i,num,e)"><i class="menu-bar" ></i>{{i.title}}</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -53,18 +66,49 @@
         },
         created(){
             //全部菜单数据的定义
-            this.$InitMenu("menuList");
+            // this.$InitMenu("menuList");
             //初始化默认显示档案管理下内容,
-            bus.$on("isShowDrawer", (e)=>{
-                this.isShowDrawer = e;
+            // bus.$on("isShowDrawer", (e)=>{
+            //     this.isShowDrawer = e;
+            // });
+            // //子菜单点击的触发
+            // bus.$on('upShowDrawer', (e) => {
+            //     this.isShowDrawer = e;
+            // });
+            //初始化默认显示的菜单
+            this.handleDefaultMenuList();
+            //二级菜单数据的过滤
+            bus.$on('menuItem', res => {
+                if(res.hasOwnProperty("subs"))  this.menuList = res.subs;
             });
-            //子菜单点击的触发
-            bus.$on('upShowDrawer', (e) => {
-                this.isShowDrawer = e;
+            //选中菜单的样式去除
+            bus.$on('closeDropBox', () => {
+
             });
         },
         methods: {
-            //菜单元素的点击事件
+            //默认显示菜单的控制
+            handleDefaultMenuList(){
+                let self = this;
+                this.$my.getSource(this, this.$my.menu_path).then(res => {
+                    if(res.status == 200){
+                        let data = res.data.items;
+                        self.menuList = data[1].subs;
+                    }
+                });
+            },
+            //菜单离开后
+            handleCloseChildMenuList(e){
+                let top = $(e.target).offset().top;
+                let bottom = $(e.target).offset().top + $(e.target).height();
+                if(e.pageY <= top || e.pageY >= bottom) bus.$emit("hideChildMenu",null);
+            },
+            //鼠标滑过时需处理的事件
+            handleOpenCHildMenuList(data, ele){
+                let document = $(ele.target).parents("li")[0];
+                bus.$emit("showChildMenu", {data: data, el: document});
+            },
+            //一级菜单元素的点击事件
             handleClickItem(e, data){
                 //子菜单是否隐藏的控制
                 let doc = e.target;
@@ -84,9 +128,8 @@
                     bus.$emit("upShowDrawer", null);
                     return this.$router.push("/"+data.index);
                 };
-               
             },
-            //子菜单点击事件的触发
+            //二级菜单点击事件的触发
             handleChildItemClick(data, index, doc){
                 let self = this;
                 //判断子菜单是否存在，若存在子菜单则进行子菜单的显示，若不存在则直接进行地址的跳转
@@ -147,7 +190,7 @@
 .sidebar > ul {height:100%; width: 199px;list-style-type: none;}
 /* 自定义菜单样式 */
 .isDisplay{display: none;}
-.menu-list{border-right: 1px solid #ccc;border-bottom: 1px solid #ccc}
+.menu-list{border-right: 1px solid #ccc;}
 .menu-list>li{
     width: 100%;
     height: auto;
@@ -218,7 +261,7 @@
     line-height: 48px;
     display: inline-block;
     position: relative;
-    width: calc(100% - 5px);
+    width: 100%;
 }
 .child-menu-list>li>a:hover{color: #487CC1;}
 .menu-bar{

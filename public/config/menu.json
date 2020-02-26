@@ -2,7 +2,7 @@
     "items": [
         {"icon": "el-icon-lx-home","index": "dashboard","title": "首页", "show": true},
         {"icon": "el-icon-notebook-1","index": "model1","title": "档案管理", "show": true,"subs": [
-            {"index": "model1-1","title": "客户档案管理", "subs": [
+            {"icon": "el-icon-folder", "index": "model1-1","title": "客户档案管理", "subs": [
                 {"index": "model1-1-1","title": "业务申请", "subs": [
                     {"index": "model1-1-1-1","title": "新装"},
                     {"index": "model1-1-1-1","title": "变更"},
@@ -17,11 +17,11 @@
                     {"index": "model1-1-6-2","title": "抄表段采集片区维护"}
                 ]}
             ]},
-            {"index": "model1-2","title": "计量档案管理", "subs": [
+            {"icon": "el-icon-folder","index": "model1-2","title": "计量档案管理", "subs": [
                 {"index": "model1-2-1","title": "计量装置换装"},
                 {"index": "model1-2-2","title": "计量装置换装工单"}
             ]},
-            {"index": "model1-3","title": "电价档案管理", "subs": [
+            {"icon": "el-icon-folder","index": "model1-3","title": "电价档案管理", "subs": [
                 {"index": "model1-3-1","title": "销售电价维护申请"},
                 {"index": "model1-3-2","title": "购电价维护申请"},
                 {"index": "model1-3-3","title": "待办任务"},
@@ -29,16 +29,16 @@
                 {"index": "model1-3-5","title": "各单位售电价设置"},
                 {"index": "model1-3-6","title": "各单位购电价设置"}
             ]},
-            {"index": "model1-4","title": "网架档案管理"},
-            {"index": "model1-5","title": "配网GIS对照管理"},
-            {"index": "model1-6","title": "待办事项", "subs": [
+            {"icon": "el-icon-folder","index": "model1-4","title": "网架档案管理"},
+            {"icon": "el-icon-folder","index": "model1-5","title": "配网GIS对照管理"},
+            {"icon": "el-icon-folder","index": "model1-6","title": "待办事项", "subs": [
                 {"index": "model1-6-1","title": "待办任务"},
                 {"index": "model1-6-2","title": "工单办理跟踪"}
             ]}
         ]},
-        {"icon": "el-icon-coin","index": "model2","title": "电费核算管理", "show": true, "subs": [
-            {"index": "model2-1","title": "算费任务跟踪"},
-            {"index": "model2-2","title": "算费工单管理", "subs": [
+        {"icon": "el-icon-coin","index": "model2","title": "核算管理", "show": true, "subs": [
+            {"icon": "el-icon-folder","index": "model2-1","title": "算费任务跟踪"},
+            {"icon": "el-icon-folder","index": "model2-2","title": "算费工单管理", "subs": [
                 {"index": "model2-2-1","title": "算费任务统计"},
                 {"index": "model2-2-2","title": "发起工单管理"},
                 {"index": "model2-2-3","title": "准备工单管理"},
@@ -48,27 +48,27 @@
                 {"index": "model2-2-7","title": "工单发行管理"},
                 {"index": "model2-2-8","title": "工单推送管理"}
             ]},
-            {"index": "model2-3","title": "灵活售电费发行", "subs": [
+            {"icon": "el-icon-folder","index": "model2-3","title": "灵活售电费发行", "subs": [
                 {"index": "model2-3-1","title": "灵活算费工单查询"},
                 {"index": "model2-3-1","title": "电费明细查询"}
             ]},
-            {"index": "model2-4","title": "退补管理", "subs": [
+            {"icon": "el-icon-folder","index": "model2-4","title": "退补管理", "subs": [
                 {"index": "model2-3-1","title": "政策性退补"},
                 {"index": "model2-3-1","title": "非政策性退补"}
             ]},
-            {"index": "model2-5","title": "购电费管理", "subs": [
+            {"icon": "el-icon-folder","index": "model2-5","title": "购电费管理", "subs": [
                 {"index": "model2-3-1","title": "购电量基数维护"},
                 {"index": "model2-3-1","title": "购电费分摊"}
             ]},
             {"index": "model2-6","title": "待办任务"}
         ]},
         {"icon": "el-icon-tickets","index": "model3","title": "抄表管理", "show": true, "subs": [
-            {"index": "model3-1","title": "抄表工单统计"},
-            {"index": "model3-2","title": "抄表未完工单"},
-            {"index": "model3-3","title": "抄表未审核工单"},
-            {"index": "model3-4","title": "待办任务"}
+            {"icon": "el-icon-folder","index": "model3-1","title": "抄表工单统计"},
+            {"icon": "el-icon-folder","index": "model3-2","title": "抄表未完工单"},
+            {"icon": "el-icon-folder","index": "model3-3","title": "抄表未审核工单"},
+            {"icon": "el-icon-folder","index": "model3-4","title": "待办任务"}
         ]},
-        {"icon": "el-icon-data-analysis","index": "model4","title": "查询统计管理", "show": true, "subs": [
+        {"icon": "el-icon-data-analysis","index": "model4","title": "查询统计管理", "show": false, "subs": [
             {"index": "model4-1","title": "客户档案查询", "subs": [
                 {"index": "model4-1-1","title": "基本档案查询"},
                 {"index": "model4-1-2","title": "工作流程查询"},
@@ -90,10 +90,15 @@
                 {"index": "model4-3-2","title": "退补工单统计查询"}
             ]}
         ]},
-        {"icon": "el-icon-date","index": "model5","title": "报表管理", "show": true, "subs": [
+        {"icon": "el-icon-date","index": "model5","title": "报表管理", "show": false, "subs": [
             {"index": "model5-1","title": "报表设计生成"},
             {"index": "model5-2","title": "报表审批"},
             {"index": "model5-3","title": "报表查询"}
+        ]},
+        {"icon": "el-icon-date","index": "model5","title": "统计分析", "show": true, "subs": [
+            {"icon": "el-icon-folder","index": "model5-1","title": "报表设计生成"},
+            {"icon": "el-icon-folder","index": "model5-2","title": "报表审批"},
+            {"icon": "el-icon-folder","index": "model5-3","title": "报表查询"}
         ]},
         {"icon": "el-icon-setting","index": "model6","title": "系统管理", "show": true, "subs": [
             {"index": "model6-1","title": "操作员管理"},
