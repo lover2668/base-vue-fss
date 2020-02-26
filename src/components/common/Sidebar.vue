@@ -114,6 +114,7 @@
                 let doc = e.target;
                 let _child = $(doc).parents("li").find("ul.child-menu-list");
                 if(_child.length > 0){
+                    //存在子菜单
                     if(_child.attr("data-show") == "false"){
                         //设置为显示时
                         _child.attr("data-show","true");
@@ -124,7 +125,7 @@
                         _child.hide(100);
                     }
                 }else{
-                    // $($(".menu-list-item")[0]).addClass("is-active");
+                    //不存在子菜单
                     bus.$emit("upShowDrawer", null);
                     return this.$router.push("/"+data.index);
                 };

@@ -5,13 +5,13 @@
             <i class="el-icon-menu"></i>
         </div> -->
         <!-- 文本描述 -->
-        <div class="logo">电力营销管理系统</div>
+        <div class="logo" style="background-color: #15345D;">电力营销管理系统</div>
         <!-- 一级菜单区域 -->
         <div>
             <ul class="top-menu">
                 <li v-for="(item, index) in menuData" :key="index">
-                    <a href="javascript: void(0)" v-if="index == showItem" class="top-menu-item top-active" @click="(e)=>handleCheckTopMenu(e,item)">{{item.title}}</a>
-                    <a href="javascript: void(0)" v-else class="top-menu-item" @click="(e)=>handleCheckTopMenu(e,item)">{{item.title}}</a>
+                    <a href="javascript: void(0)" v-if="index == showItem" class="top-menu-item top-active" @click="(e)=>handleCheckTopMenu(e,item,index)">{{item.title}}</a>
+                    <a href="javascript: void(0)" v-else class="top-menu-item" @click="(e)=>handleCheckTopMenu(e,item,index)">{{item.title}}</a>
                 </li>
             </ul>
         </div>
@@ -121,10 +121,12 @@
                 this.fullscreen = !this.fullscreen;
             },
             //顶部菜单的点击事件
-            handleCheckTopMenu(e, data){
-                $(".top-menu-item").removeClass("top-active");
-                $(e.target).addClass("top-active");
-                bus.$emit("menuItem", data);
+            handleCheckTopMenu(e, data, index){
+                if(index != 0){
+                    $(".top-menu-item").removeClass("top-active");
+                    $(e.target).addClass("top-active");
+                    bus.$emit("menuItem", data);
+                }else   this.$router.push("/"+data.index);
             }
         },
         mounted(){
